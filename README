@@ -5,3 +5,9 @@ This is a very simple script which uses sendmail and rufus-scheduler to generate
 The text for each item in the report is generated form the most recent comment on a card, or from the description field if there are no comments. This allows me to update the comments as I work so that an accurate status of the item is depicted in the report. I usually add a comment to each card I have worked on during the day specifying what I did, or am busy doing, this way my report reads nicely :)
 
 Next step is to setup a Latex template will allow me to add some images to my report and have it in a pretty PDF format :P
+
+Usage:
+
+Rename example_config.yml to config.yml
+Update the config to your sendmail, trello and board parameters
+run "ruby TrelloReports.rb"
