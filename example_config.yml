@@ -1,0 +1,39 @@
+---
+:trello:
+  :app_token: <YOUR TRELLO TOKEN>
+  :api_key: <YOUR TRELLO KEY>
+
+# We use sendmail to email reports so make sure your sendmail is setup correctly
+:email:
+  :to: '<YOUR EMAIL ADDRESS>'
+  :from: '<SENDMAIL EMAIL ADDRESS>'
+  # This will be eval'd so you can include basic things like the date
+  :subject: 'Progess Report - #{DateTime.now.to_date.to_s}'
+
+# You can have as many reports as you wish under here
+:reports:
+  # Standard cron(5) string for when to execute the reporting
+  # This one is every friday at 4pm
+- :cron: "0 16 * * FRI"
+  # Number of days to use in the report. Only cards modified during this time are reported
+  # Always from current date minus "period" days
+  :period: 7
+  # Don't report about cards which have the following labels
+  :exclude_labels:
+    - Personal
+  # Only report about cards which are in one of the following lists
+  :lists:
+    - In Progress
+    - Done
+  # The board ID to report, can be found in the URL of the board
+  :board: <TRELLO BOARD ID>
+
+# Just stack reports like this
+- :cron: "0 8 * * MON"
+  :period: 7
+  :exclude_labels:
+    - Blocked
+  :lists:
+    - Todo
+    - In Progress
+  :board: <TRELLO BOARD ID 2>
